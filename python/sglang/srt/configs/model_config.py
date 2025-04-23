@@ -278,6 +278,7 @@ class ModelConfig:
             "compressed-tensors",
             "fbgemm_fp8",
             "w8a8_fp8",
+            "quark",
         ]
         optimized_quantization_methods = [
             "fp8",
@@ -309,6 +310,7 @@ class ModelConfig:
             quant_method = quant_cfg.get("quant_method", "").lower()
 
             # Detect which checkpoint is it
+            """
             for _, method in QUANTIZATION_METHODS.items():
                 quantization_override = method.override_quantization_method(
                     quant_cfg, self.quantization
@@ -317,7 +319,8 @@ class ModelConfig:
                     quant_method = quantization_override
                     self.quantization = quantization_override
                     break
-
+            """
+                    
             # Verify quantization configurations.
             if self.quantization is None:
                 self.quantization = quant_method
